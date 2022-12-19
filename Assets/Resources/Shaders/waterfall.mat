@@ -33,7 +33,7 @@ Material:
     m_Colors:
     - _baseColor: {r: 0, g: 0.4117647, b: 1, a: 0}
     - _secondColor: {r: 0, g: 1, b: 0.8903768, a: 0}
-    - _speed: {r: 0, g: 1, b: 0, a: 0}
+    - _speed: {r: 0, g: -1, b: 0, a: 0}
     - _tiling: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &4002368050006279957
