@@ -3,7 +3,52 @@ guid: 7e92aeb609390954497c5771096e5c8a
 ModelImporter:
   serializedVersion: 22103
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blusa
+    second: {fileID: 2100000, guid: 0adc0fc24f723574cad11a15a0236ea9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: delantal
+    second: {fileID: 2100000, guid: c10a96b669c058043b6d6cd6e6b53aff, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: hair
+    second: {fileID: 2100000, guid: c7eda8498b13a2d4396254e4088efdb1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ojos
+    second: {fileID: 2100000, guid: 92cff12acb15c9d45b5971a0a88db597, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: piel
+    second: {fileID: 2100000, guid: bbb1699a43e92b74b8686e943dd614da, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pupila
+    second: {fileID: 2100000, guid: 4db1025a1b7983a46b28208c04522ccd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: vestido
+    second: {fileID: 2100000, guid: 5f853eafd21a6c0418dee1742e5659bc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: white
+    second: {fileID: 2100000, guid: 03ddb735282673b4797681cacfe05bba, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: zapato
+    second: {fileID: 2100000, guid: 8bb0f621e0509424d9e85766c2dd8f58, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
