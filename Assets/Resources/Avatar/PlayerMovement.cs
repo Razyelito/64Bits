@@ -4,47 +4,78 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private CharacterController character;
+    public Animator playerAnim;
+    public Rigidbody playerRigid;
+    public float walk_speed, run_speed,ro_speed,olw_speed, wb_speed;
+    public bool walking;
+    public Transform playerTrans;
+    
 
-    public new Transform camera; 
-    public float speed = 4;
-    public float gravity = -9.8f;
+    /*
+    UpArrow	Up arrow key.
+    DownArrow	Down arrow key.
+    RightArrow	Right arrow key.
+    LeftArrow	Left arrow key.
+    */
+    void FixedUpdate(){
+        if(Input.GetKey(KeyCode.UpArrow)){
+            playerRigid.velocity = transform.forward * walk_speed * Time.deltaTime;
+        }
+        if(Input.GetKey(KeyCode.DownArrow)){
+            playerRigid.velocity = -transform.forward * walk_speed * Time.deltaTime;
+        }
+        if(walking == false){
+            playerRigid.velocity = -transform.forward * Time.deltaTime;
+        }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        character = GetComponent<CharacterController>();
+        if(Input.GetKeyUp(KeyCode.UpArrow)){
+            playerRigid.velocity = transform.forward * wb_speed * Time.deltaTime;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        float hor = Input.GetAxis("Horizontal");
-        float ver = Input.GetAxis("Vertical");
-        Vector3 movement = Vector3.zero;
-
-        if (hor != 0 || ver != 0)
-        {
-            Vector3 forward = camera.forward;
-            forward.y = 0;
-            forward.Normalize();
-
-            Vector3 right = camera.right;
-            right.y = 0;
-            right.Normalize();
-
-            Vector3 direction = forward * ver + right * hor;
-            direction.Normalize();
-
-            movement = direction * speed * Time.deltaTime;
-            transform.rotation = Quaternion.Slerp(transform.rotation,Quaternion.LookRotation(direction),0.9f);
-                        
+        if(Input.GetKey(KeyCode.UpArrow)){            
+            playerAnim.SetTrigger("walking");
+            playerAnim.ResetTrigger("espera");
+            walking = true;
         }
-        if(movement.y >= 27){
-            movement.y += gravity * Time.deltaTime;
+        if(Input.GetKeyUp(KeyCode.UpArrow)){            
+            playerAnim.ResetTrigger("walking");
+            playerAnim.SetTrigger("espera");
+            walking = false;
         }
-
-        character.Move(movement);
+        if(Input.GetKey(KeyCode.DownArrow)){            
+            playerAnim.SetTrigger("espera");
+            //playerAnim.ResetTrigger("idle");
+        }
+        if(Input.GetKeyUp(KeyCode.DownArrow)){            
+            playerAnim.ResetTrigger("walking");
+            playerAnim.SetTrigger("espera");
+        }
+        if(Input.GetKey(KeyCode.LeftArrow)){            
+            playerTrans.Rotate(0, -ro_speed * Time.deltaTime, 0);
+        }
+        if(Input.GetKey(KeyCode.RightArrow)){            
+            playerTrans.Rotate(0, ro_speed * Time.deltaTime, 0);
+        }
+        if(walking == true){
+            if(Input.GetKey(KeyCode.LeftShift)){
+                float temp = 120;
+                walk_speed = temp + run_speed;
+                playerAnim.SetTrigger("running");
+                playerAnim.ResetTrigger("walking");                
+            }
+            if(Input.GetKeyUp(KeyCode.LeftShift) || (Input.GetKeyUp(KeyCode.UpArrow))){
+                walk_speed = olw_speed;
+                playerAnim.ResetTrigger("running");
+                playerAnim.SetTrigger("walking");                
+            }
             
+        }
+        
+
+
     }
 }
