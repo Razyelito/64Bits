@@ -9,6 +9,8 @@ public class BotonPanelObjetos : MonoBehaviour
     public GameObject mensaje;
     public static bool esPrimeraVez = true;
     public static bool activoMensaje = true;
+    public AudioSource MenuSound;
+    public AudioSource MenuCloseSound;
 
     void Start() {
         panel = GameObject.Find("Contenedor_panel");
@@ -21,12 +23,14 @@ public class BotonPanelObjetos : MonoBehaviour
 
     void Update() {
         if (Input.GetKeyDown(KeyCode.P) && activoMensaje) {
+            MenuSound.Play();
             panel.SetActive(true);
             btn_mostrar.SetActive(false);
             activoMensaje = false;
         }
         else if (Input.GetKeyDown(KeyCode.P) && !activoMensaje)
         {
+            MenuSound.Play();
             panel.SetActive(false);
             btn_mostrar.SetActive(true);
             activoMensaje = true;
@@ -37,6 +41,7 @@ public class BotonPanelObjetos : MonoBehaviour
     }
 
     public void cerrarPanel() {
+        MenuCloseSound.Play();
         panel.SetActive(false);
         btn_mostrar.SetActive(true);
         if (activoMensaje) {
@@ -46,6 +51,7 @@ public class BotonPanelObjetos : MonoBehaviour
 
     public void mostrarPanel()
     {
+        MenuSound.Play();
         panel.SetActive(true);
         btn_mostrar.SetActive(false);
         if (esPrimeraVez) {
